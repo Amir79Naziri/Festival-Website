@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block head %}
+{% endblock %}
+{% block title %}
+    Image Gallery
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+    <h1 style="text-align: center">Story Galley</h1><br><br>
+    {% for story in stories %}
+        <div class="item">
+            <div class="item_story" style="padding: 2px">
+                <p>{{ story.story }}</p>
+            </div>
+            <div class="item_comment">
+                <a href="view_comments/{{ TYPE }}_{{ story.id }}" type="button" class="btn btn-outline-primary btn-md" >view comments</a>
+                <a href="add_comment/{{ TYPE }}_{{ story.id }}" type="button" class="btn btn-outline-primary btn-md" >add comment</a>
+                <audio controls style="float: right; width: 250px; height: 30px">
+                    <source src="/media/tts_audio/story/story-{{ story.id }}.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+        <br>
+    {% endfor %}
+
+    </div>
+
+
+    <style>
+
+    .item {
+        padding: 5px;
+        border: 1px;
+        border-radius: 4px;
+        -webkit-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05);
+        width: 1200px;
+
+    }
+    .item:hover{
+        background: rgba(0, 0, 0, 0.02);
+        cursor: pointer
+    }
+
+    .container {
+        padding: 5px 2px 5px;
+    }
+    </style>
+
+{% endblock %}

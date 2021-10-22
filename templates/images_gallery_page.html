@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block head %}
+{% endblock %}
+{% block title %}
+    Image Gallery
+{% endblock %}
+
+{% block content %}
+
+    {% for photo in photos %}
+        <div class="item">
+            <div class="item_image" style="padding: 1px;">
+                <img src="{{ photo.url }}" border="0" alt="" style="max-width: 700px; height: auto">
+            </div>
+            <div class="item_comment">
+                <a href="view_comments/{{ TYPE }}_{{ photo.id }}" type="button" class="btn btn-outline-primary btn-md" >view comments</a>
+                <a href="add_comment/{{ TYPE }}_{{ photo.id }}" type="button" class="btn btn-outline-primary btn-md" >add comment</a>
+            </div>
+        </div>
+        <br>
+    {% endfor %}
+
+    <style>
+
+    .item {
+        padding: 2px;
+        text-align: center;
+        border: 1px;
+        border-radius: 5px;
+        -webkit-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    </style>
+{% endblock %}

@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+{% endblock %}
+{% block title %}
+    Comments
+{% endblock %}
+
+{% block content %}
+
+    <div class="split left">
+  <div class="centered">
+      <div class="hero-image image-fest">
+      <div class="hero-text">
+          <a href="gallery/images" class="myLink">
+      <div style="display:inline-block">
+        <h1 class="myh1">Image Gallery</h1>
+      </div>
+    </a>
+    <p class="myP">Welcome to <b>Image Gallery</b>. you can comment under each Image and also view people's comments, Hope to Enjoy.</p>
+      </div>
+      </div>
+
+  </div>
+</div>
+
+
+
+<div class="split right">
+  <div class="centered">
+      <div class="hero-image story-fest">
+          <div class="hero-text">
+    <a href="gallery/stories" class="myLink">
+      <div style="display:inline-block">
+        <h1 class="myh1">Story Gallery</h1>
+      </div>
+    </a>
+    <p class="myP">Welcome to <b>Image Gallery</b>. you can comment under each Image and also view people's comments, Hope to Enjoy.</p>
+  </div>
+      </div>
+  </div>
+</div>
+
+    <style>
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow: hidden;
+  padding-top: 20px;
+  color: white;
+}
+
+.left {
+  left: 0;
+  background-color: #ab69d4;
+}
+
+.right {
+  right: 0;
+  background-color: #6c3ec1;
+}
+
+.hero-image {
+  background-color: #cccccc;
+  height: 1000px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.image-fest {
+    background-image: url("{% static 'photo/img_gllry.jpg'%}");
+}
+
+.story-fest {
+   background-image: url("{% static 'photo/story_gllry.jpg'%}");
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.centered {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  text-align: center;
+}
+
+.myLink {
+  text-decoration:none;
+  color: #ffffff !important;
+  opacity:0.9;
+}
+.myLink:hover {
+  opacity: 1
+}
+
+.myLink:hover h1 {
+  font-size: 48px;
+}
+
+.myh1 {
+   line-height: 90px;
+   font-size: 45px;
+}
+.myP {
+   font-size: 15px;
+   max-width: 370px;
+   padding-left: 20px;
+   padding-right: 20px;
+   margin: auto;
+}
+
+</style>
+
+{% endblock %}

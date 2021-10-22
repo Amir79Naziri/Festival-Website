@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+{% block title %}
+    Comments
+{% endblock %}
+
+{% block content %}
+
+    <div class="container d-flex justify-content-center mt-100 mb-100">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">All Comments</h4>
+                    <a href="/gallery/{{ cancel_url }}" type="button" class="btn btn-outline-light text-dark mybtn">back to {{ TYPE }} gallery</a>
+                    <div class="clearfix"></div>
+
+                </div>
+                <div class="comment-widgets m-b-20">
+                    {% if comments|length == 0 %}
+                        <h2 style="text-align: center">no comment yet &#128532;</h2>
+                    {% else %}
+                        {% for comment in comments %}
+                            <div class="d-flex flex-row comment-row ">
+                                <div class="p-2"><span class="round"><i class='fas fa-user-circle' style='font-size:48px'></i></span></div>
+                                    <div class="comment-text active w-100">
+                                        <h5>{{ comment.username }}</h5>
+                                        <div class="comment-footer"> <span class="date">{{ comment.date }}</span></div>
+                                        <p class="m-b-5 m-t-10">{{ comment.comment }}</p>
+                                        <audio controls style="float: right; width: 250px; height: 30px">
+                                            {% if TYPE == 'image' %}
+                                                <source src="/media/tts_audio/image_comment/comment-{{ ID }}-{{ comment.id }}.mp3" type="audio/mpeg">
+                                            {% else %}
+                                                <source src="/media/tts_audio/story_comment/comment-{{ ID }}-{{ comment.id }}.mp3" type="audio/mpeg">
+                                            {% endif %}
+
+                                        </audio>
+                                    </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <style>
+p {
+  max-width: 120ch;
+}
+
+.card-title{
+    width:55%;
+    margin-right:2%;
+    float: left;
+}
+
+.mybtn {
+    float: right;
+}
+.clearfix{
+    clear:both
+}
+
+
+.card-no-border .card {
+    border: 0px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05)
+}
+
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem
+}
+
+.comment-widgets {
+    width: 1200px;
+}
+
+.comment-footer {
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.62);
+}
+
+.comment-text {
+    text-align: left;
+}
+
+.comment-widgets .comment-row:hover {
+    background: rgba(0, 0, 0, 0.02);
+    cursor: pointer
+}
+
+.comment-widgets .comment-row {
+    border-bottom: 1px solid rgba(120, 130, 140, 0.13);
+    padding: 5px
+}
+
+.comment-text:hover {
+    visibility: hidden
+}
+
+.comment-text:hover {
+    visibility: visible
+}
+
+.round img {
+    border-radius: 100%
+}
+
+
+.mt-100 {
+    margin-top: 100px;
+}
+
+.mb-100 {
+    margin-bottom: 100px;
+}
+    </style>
+
+
+{% endblock %}
